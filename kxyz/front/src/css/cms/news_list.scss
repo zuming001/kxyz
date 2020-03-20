@@ -1,0 +1,20 @@
+.box{
+  .box-header{
+    .form-inline{
+      .left-group{
+        margin-right: 10px;
+      }
+    }
+  }
+  .box-body{
+    tr{
+      height: 40px;
+      th{
+        padding: 4px 4px;
+      }
+      td{
+        padding: 4px 4px;
+      }
+    }
+  }
+}

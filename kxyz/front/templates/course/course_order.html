@@ -1,0 +1,66 @@
+{% extends 'base/front_base.html' %}
+
+{% block title %}
+    订单详情
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/course/course_order.min.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="main">
+        <div class="wrapper">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>商品名称</th>
+                    <th>单价(元)</th>
+                    <th>共计(元)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="wares-group">
+                            <a href="#">
+                                <img class="thumbnail" src="{{ goods.thumbnail }}" alt="">
+                                <div class="title">{{ goods.title }}</div>
+                            </a>
+                        </div>
+                    </td>
+                    <td class="td-text">{{ goods.price }}</td>
+                    <td class="td-text">{{ goods.price }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <form action="https://pay.bearsoftware.net.cn/" method="post" id="pay-form" class="form-group">
+                <input type="hidden" name="uid" value="270aa06fa41ff7ff60295f9a">
+                <input type="hidden" name="price" value="{{ goods.price }}">
+                <input type="hidden" name="notify_url" value="{{ notify_url }}">
+                <input type="hidden" name="return_url" value="{{ return_url }}">
+                <input type="hidden" name="orderid" value="{{ order.pk }}">
+                <input type="hidden" name="orderuid" value="{{ request.user.pk }}">
+                <input type="hidden" name="goodsname" value="{{ goods.title }}">
+                <input type="hidden" name="key" value="">
+                <div class="pay-way">
+                    <label for="istype-wx">
+                        <input type="radio" id="istype-wx" name="istype" value="2">
+                        <span class="wx-btn">
+                            <img src="http://nos.netease.com/test-edu-image/1BD9F69D6760CE1508D2269864AA54F8.png"
+                                 alt="">
+                        </span>
+                    </label>
+                    <label for="istype-zfb">
+                        <input type="radio" id="istype-zfb" name="istype" value="1">
+                        <span class="zfb-btn"></span>
+                    </label>
+                    <div style="clear: both;"></div>
+                </div>
+                <div class="submit-group">
+                    <input type="submit" value="去支付" id="submit-btn" class="submit-btn">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

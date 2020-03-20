@@ -1,0 +1,232 @@
+@import "../common/init.scss";
+@import "../common/constants";
+@import "../common/header";
+@import "../common/body";
+@import "../common/footer";
+
+.main{
+    width: 100%;
+    margin-top: $navHeight + 20px;
+
+    .wrapper{
+        width: $pageWidth;
+        margin: 0 auto;
+        //background: green;
+        //height: 1000px;
+        overflow: hidden;
+
+        .main-content-wrapper{
+            .banner-group{
+                width: 100%;
+                height: $bannerHeight;
+                //background: #0e275e;
+                position: relative;
+                overflow: hidden;
+                z-index: 0;
+
+                .banner-ul{
+                    overflow: hidden;
+                    width: $bannerWidth*4;
+                    position: absolute;
+                    left: 0;
+
+                    li{
+                        float: left;
+                        width: $bannerWidth;
+                        height: $bannerHeight;
+
+                        img{
+                            width: $bannerWidth;
+                            height: $bannerHeight;
+                        }
+                    }
+
+                }
+
+                //轮播图上的左右方向键
+                .arrow{
+                    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+                    font-size: 70px;
+                    color: #fff;
+                    position: absolute;
+                    margin-top: -45px;
+                    cursor: pointer;
+                    display: none;
+                }
+
+                .left-arrow{
+                    top:50%;
+                    left: 20px;
+                }
+
+                .right-arrow{
+                    top: 50%;
+                    right: 20px;
+                }
+
+                .page-control-group{
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    bottom: 20px;
+
+                    .page-control{
+                        margin: 0 auto;
+                        overflow: hidden;
+                        //因为 小点的个数是写死的，所以需要css动态加载
+                        //width: 10*4px +8*2px +16*3px;
+
+                        li{
+                            width: 10px;
+                            height: 10px;
+                            border: 1px solid #fff;
+
+                            border-radius: 50%;
+
+                            float: left;
+                            margin: 0 8px;
+                            box-sizing: border-box;
+                            cursor: pointer;
+
+                            // & 表示为父元素 -> li
+                            &.active{
+                                background: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.main{
+    .wrapper{
+        .list-out-group{
+            background: #fff;
+            margin-top: 14px;
+
+            .list-tab{
+                width: 100%;
+                height: 66px;
+                overflow: hidden;
+                border: 1px solid #eee;
+                border-left: none;
+                border-right: none;
+
+                li{
+                    float: left;
+                    padding: 0 10px;
+                    margin-top: 20px;
+                    a{
+                        color: #878787;
+                    }
+                    //第一个li标签下的a标签
+                    &:first-of-type{
+                        border-left: 5px solid $titleColor;
+                    }
+                    &.active{
+                        a{
+                            color: $titleColor;
+                        }
+                    }
+                }
+            }
+
+            .list-inner-group{
+                li {
+                    padding: 20px;
+                    overflow: hidden;
+                    border-bottom: 1px solid #eee;
+                    a{
+                        .thumbnail-group{
+                            float: left;
+                            width: 226px;
+                            height: 162px;
+                            position: relative;
+
+                            img{
+                                width: 100%;
+                                height: 100%;
+                            }
+                            span{
+                                position: absolute;
+                                text-align: center;
+                                left: 0;
+                                top: 0;
+                                overflow: hidden;
+                                min-width: 30px;
+                                padding: 0 5px;
+                                height: 20px;
+                                line-height: 20px;
+                                font-size: 14px;
+                                background-color: $titleColor;
+                                color: #fff;
+                            }
+                        }
+                        .news-group{
+                            float: right;
+                            width: 504px;
+                            height: 162px;
+                            position: relative;
+
+                            .title{
+                                font-size: 20px;
+                                color: #212121;
+
+                                &:hover{
+                                    color: $auxiliaryColor;
+                                }
+
+                            }
+
+                            .desc {
+                                color: $themColor;
+                                font-size: 14px;
+                                margin-top: 10px;
+                            }
+                            .more {
+                                position: absolute;
+                                color: #666;
+                                font-size: 14px;
+                                left: 0;
+                                right: 0;
+                                bottom: 0;
+
+                                .pub-time{
+                                    float: right;
+                                    margin-left: 20px;
+                                }
+
+                                .author{
+                                    float: right;
+                                    margin-left: 50px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .load-more-group{
+                padding: 20px 0;
+                text-align:center;
+                .load-more{
+                    border: none;
+                    outline: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    width: 400px;
+                    height: 40px;
+                    line-height: 40px;
+                    background: $auxiliaryColor;
+                    color: #fff;
+                    margin: 0 auto 20px;
+                    text-align: center;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+

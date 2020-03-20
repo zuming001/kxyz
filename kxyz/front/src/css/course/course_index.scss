@@ -1,0 +1,71 @@
+@import "../common/init.scss";
+@import "../common/header.scss";
+@import "../common/footer.scss";
+@import "../common/body.scss";
+@import "../common/constants.scss";
+@import "course_nav.scss";
+
+.main{
+  .wrapper{
+    .course-list{
+      margin-top: 20px;
+      //flex能够方便快捷的整理,但是会出现bug
+      //display: flex;
+      //flex-direction: row;
+      //flex-wrap: wrap;
+      //justify-content: space-between;
+      li{
+        $courseItemHeight:280px;
+        $thumbnailHeight:158px;
+        float: left;
+        margin-right: 14px;
+        width: 278px;
+        height: $courseItemHeight;
+        background: #fff;
+        margin-bottom: 16px;
+        .thumbnail-group{
+          width: 100%;
+          height: $thumbnailHeight;
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .course-info{
+          padding: 16px;
+          width: 100%;
+          box-sizing: border-box;
+          height: $courseItemHeight - $thumbnailHeight;
+          position: relative;
+
+          .title{
+            color: $mainFontColor;
+          }
+          .author{
+            margin-top: 10px;
+            color: $themColor;
+            font-size: 14px;
+          }
+          .price-group{
+            position: absolute;
+            left: 16px;
+            right: 16px;
+            bottom: 16px;
+            // 因为<span class="free">免费</span>是行内元素,所以可以直接使用text-align: right; 使得免费靠右
+            text-align: right;
+            .free{
+              color: #7ed321;
+            }
+            .pay{
+              color: #f44b4b;
+            }
+          }
+        }
+        &:hover{
+          // 阴影的设置
+          box-shadow: 0 3px 16px rgba(0,0,0,0.1);
+        }
+      }
+    }
+  }
+}

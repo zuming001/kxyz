@@ -1,0 +1,123 @@
+{% extends 'base/front_base.html' %}
+
+{% load news_filters %}
+
+{% block title %}
+    资讯地带
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/news/index.min.css' %}">
+{#使用art-template序列化数据#}
+    <script src="{% static 'arttemplate/template-web.js' %}"></script>
+    <script src="{% static 'js/index.min.js' %}"></script>
+<script id="news-item" type="text/html">
+{#在verbatim标签中的所有代码都是普通文本 #}
+{% verbatim %}
+    {{ each newses news index }}
+    <li>
+        <a href="/news/{{ news.id }}">
+            <div class="thumbnail-group">
+                <img src="{{ news.thumbnail }}" alt="">
+                <span class="tag">{{ news.category.name }}</span>
+            </div>
+            <div class="news-group">
+                <p class="title">
+                    {{ news.title }}
+                </p>
+                <p class="desc">{{ news.desc }}</p>
+                <p class="more">
+                    <span class="category">{{ news.category.name }}</span>
+                    <span class="pub-time">{{ news.pub_time|timeSince }}</span>
+                    <span class="author">{{ news.author.username }}</span>
+                </p>
+            </div>
+        </a>
+    </li>
+{{ /each }}
+{% endverbatim %}
+</script>
+{% endblock %}
+
+{% block main %}
+    <div class="main">
+        <div class="wrapper">
+            <div class="main-content-wrapper">
+                <div class="banner-group" id="banner-group">
+                    <ul class="banner-ul" id="banner-ul">
+                        {% for banner in banners %}
+                            <li>
+                                <a href="{{ banner.link_to }}">
+                                    <img src="{{ banner.image_url }}" alt="">
+                                </a>
+                            </li>
+                        {% endfor %}
+{#                        <li>#}
+{#                            <a href="#">#}
+{#                                <img src="https://static-image.xfz.cn/1573180418_322.jpg"#}
+{#                                     alt="">#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <a href="#">#}
+{#                                <img src="https://static-image.xfz.cn/1573529430_855.jpeg"#}
+{#                                     alt="">#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <a href="#">#}
+{#                                <img src="https://static-image.xfz.cn/1573529295_518.jpeg" alt="">#}
+{#                            </a>#}
+{#                        </li>#}
+                    </ul>
+                    <span class="arrow left-arrow">‹</span>
+                    <span class="arrow right-arrow">›</span>
+                    <div class="page-control-group">
+                        <ul class="page-control">
+                        </ul>
+                    </div>
+                </div>
+                <div class="list-out-group">
+                    <ul class="list-tab">
+                        <li data-category="0" class="active">
+                            <a href="javascript:void(0);">最新资讯</a>
+                        </li>
+                        {% for category in categoryes %}
+                            <li data-category="{{ category.pk }}"><a href="javascript:void(0);">{{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    <ul class="list-inner-group">
+                        {% for news in newes %}
+                            <li>
+                                <a href="{% url 'news:news_detail' news_id=news.pk %}">
+                                    <div class="thumbnail-group">
+                                        <img src="{{ news.thumbnail }}" alt="">
+                                        <span class="tag">{{ news.category.name }}</span>
+                                    </div>
+                                    <div class="news-group">
+                                        <p class="title">
+                                            {{ news.title }}
+                                        </p>
+                                        <p class="desc">{{ news.desc }}</p>
+                                        <p class="more">
+                                            <span class="category">{{ news.category.name }}</span>
+                                            <span class="pub-time">{{ news.pub_time }}</span>
+                                            <span class="author">{{ news.author.username }}</span>
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="load-more-group">
+                        <button id="load-more-btn" class="load-more">
+                            查看更多
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!--sidebar发生改变，就很容易被修改-->
+            {% include 'common/sidebar.html' %}
+        </div>
+    </div>
+{% endblock %}

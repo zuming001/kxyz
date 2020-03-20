@@ -1,0 +1,55 @@
+{% extends 'base/front_base.html' %}
+{% load payinfo_filter %}
+
+{% block title %}
+    付费资讯
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/payinfo/payinfo.min.css' %}">
+    <script src="{% static 'js/index.min.js' %}"></script>
+{% endblock %}
+
+{% block main %}
+    <div class="main">
+        <div class="wrapper">
+            <div class="venture-left-content">
+                <div class="venture-banner">
+                    <img class="venture-banner-img" src="https://www.xfz.cn/static/build/images/web-shopxfz-banner.jpg"
+                         alt="">
+                </div>
+                <div class="venture-book">
+                    <ul>
+                        {% for payinfo in payinfos %}
+                            <li modelid="19">
+                                {# 我们在价格和 a标签这两个地方判断用户是否已经购买 #}
+                                {# django 模板中定义参数 使用with,并且通过过滤器 #}
+                                {% with payinfo|is_buyed:user as buyed %}
+                                    {% if buyed %}
+                                        <a href="{% url 'payinfo:download' %}?payinfo_id={{ payinfo.pk }}">
+                                    {% else %}
+                                        <a href="{% url 'payinfo:payinfo_order' %}?payinfo_id={{ payinfo.pk }}">
+                                    {% endif %}
+                                        <div class="venture-img venture-img-bp" author_type="文档"></div>
+                                        <div class="venture-introduct">
+                                            <span class="venture-title">{{ payinfo.title }}</span>
+                                            <span class="venture-word">{{ payinfo.profile }}</span>
+                                            <span class="venture-price">
+                                                {% if buyed %}
+                                                    点击下载
+                                                {% else %}
+                                                    ¥{{ payinfo.price }}
+                                                {% endif %}
+                                            </span>
+                                        </div>
+                                    </a>
+                                {% endwith %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% include 'common/sidebar.html' %}
+        </div>
+    </div>
+{% endblock %}

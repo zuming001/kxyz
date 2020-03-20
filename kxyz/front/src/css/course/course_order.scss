@@ -1,0 +1,106 @@
+@import "../common/init.scss";
+@import "../common/header.scss";
+@import "../common/footer.scss";
+@import "../common/body.scss";
+@import "../common/constants.scss";
+@import "course_nav";
+
+.main {
+  .wrapper {
+    width: 1070px;
+    margin-top: 20px;
+
+    .table {
+      width: 100%;
+      border-top: 1px solid #ccc;
+      background: #eaeaea;
+      text-align: center;
+      border-spacing: 20px;
+
+      .wares-group {
+        float: left;
+        margin-left: 335px;
+        width: 120px;
+        height: 90px;
+        background: white;
+        position: relative;
+        box-sizing: border-box;
+
+        .thumbnail {
+          width: 100%;
+        }
+
+        .title {
+          margin: 0 8px;
+          float: left;
+          font-size: 14px;
+          color: black;
+        }
+      }
+
+    }
+
+    .form-group {
+      .pay-way {
+        label {
+          float: right;
+        }
+
+        span {
+          border: 1px solid #ccc;
+          position: relative;
+          top: 20px;
+        }
+
+        .zfb-btn {
+          display: inline-block;
+          width: 139px;
+          height: 48px;
+          cursor: pointer;
+          background: url("http://study.163.com/res/images/pay/payList.png");
+          background-position: -140px 0;
+          background-size: 300% 200%;
+          margin-right: 20px;
+        }
+
+        .wx-btn {
+          display: inline-block;
+          width: 139px;
+          height: 48px;
+          position: relative;
+          cursor: pointer;
+
+          img {
+            top: 12px;
+            left: 16px;
+            position: absolute;
+          }
+        }
+      }
+
+      .submit-group {
+        overflow: hidden;
+        padding: 60px 0;
+
+        .submit-btn {
+          display: block;
+          text-align: center;
+          width: 136px;
+          height: 49px;
+          line-height: 49px;
+          background: url("http://s.stu.126.net/res/images/pay/payBtns.png?c9b6b849b38cca45b160a96802575ac8") no-repeat 4449px 4449px;
+          background-position: 0 -302px;
+          border: none;
+          cursor: pointer;
+          color: #fff;
+          font-size: 16px;
+          float: right;
+        }
+
+        .submit-btn:hover {
+          background-position: -139px -302px;
+        }
+      }
+    }
+  }
+}

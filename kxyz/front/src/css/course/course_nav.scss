@@ -1,0 +1,44 @@
+@import "../common/constants.scss";
+
+.main{
+  margin-top: 64px;
+  .course-nav{
+    $courseHeight:54px;
+    width: 100%;
+    height: 54px;
+    background: white;
+    //制造阴影
+    box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+
+    .nav-container{
+      width: $pageWidth;
+      height: $courseHeight;
+      margin: 0 auto;
+      overflow: hidden;
+      line-height: $courseHeight;
+
+      .title{
+        float: left;
+        color: #696969;
+        font-size: 24px;
+      }
+      .nav-list{
+        float: left;
+        margin-left: 100px;
+        li{
+          float: left;
+          margin-right: 40px;
+          a{
+            color: #888;
+          }
+          &.active{
+            a{
+              color: $mainFontColor;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

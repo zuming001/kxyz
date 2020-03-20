@@ -1,0 +1,144 @@
+{% extends 'base/front_base.html' %}
+
+{% block title %}
+    课程详情业
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/course/course_detail.min.css' %}">
+    <script src="{% static 'videojs/video.min.js' %}"></script>
+    <script src="{% static 'videojs/videojs-contrib-hls.min.js' %}"></script>
+    <script src="{% static 'videojs/videojs-contrib-quality-levels.min.js' %}"></script>
+    <script type="text/javascript" src="https://cdn.bdstatic.com/jwplayer/latest/cyberplayer.js"></script>
+    <script src="{% static 'js/course_detail.min.js' %}"></script>
+{% endblock %}
+
+{% block main %}
+    <div class="main">
+        <div class="course-nav">
+            <div class="nav-container">
+                <h3 class="title">在线课堂</h3>
+                <ul class="nav-list">
+                    <li class="active"><a href="#">最新课堂</a></li>
+                    <li><a href="#">投资人说</a></li>
+                    <li><a href="#">明星案例</a></li>
+                    <li><a href="#">创业知识</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="course-wrapper">
+                <div class="course-info">
+                    <p class="course-title">{{ course.title }}</p>
+                    <div class="price-group">
+                        <div class="share-group">
+                            <span class="title">分享至:</span>
+                            <a class="weixin share-item"></a>
+                            <a href="#" class="weibo share-item"></a>
+                        </div>
+                        <div class="buy-group">
+                            {#                            <span class="price">￥59</span>#}
+                            {% if course.price > 0 %}
+                                {% if not buyed %}
+                                    <span class="price pay">￥{{ course.price }}</span>
+                                    <a href="{% url 'course:course_order' course_id=course.pk %}" class="buy-btn">立即购买</a>
+                                {% endif %}
+                            {% else %}
+                                <span class="price free">免费</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="video-group">
+                    <span id="video-info" hidden data-video-url="{{ course.video_url }}" data-cover-url="{{ course.cover_url }}" data-course-id="{{ course.pk }}"></span>
+                    <div id="playercontainer" class="video-window"></div>
+                </div>
+            </div>
+            <div class="bottom-group">
+                <div class="course-detail-wrapper">
+                    <div class="item-group">
+                        <p class="item-title">{{ course.category.name }}</p>
+                        <div class="teacher-group">
+                            <div class="avatar-group">
+                                <img src="{{ course.lecturer.avatar }}" alt="" class="avatar">
+                            </div>
+                            <div class="teacher-info">
+                                <p class="teacher-name">{{ course.lecturer.username }}</p>
+                                <p class="teacher-desc">{{ course.lecturer.jobtitle }}</p>
+                            </div>
+                        </div>
+                        <p class="item-content">{{ course.lecturer.profile }}</p>
+                    </div>
+                    <div>
+                        <div class="item-group">{{ course.profile|safe }}</div>
+                        <div class="item-group">
+                            <p class="item-title">课程大纲</p>
+                            <p class="item-content">
+                                <div class="content">
+                            <p>一、选好合伙人是创业成功的第一步</p>
+                            <p>二、专业投资人看项目最看重的四个点</p>
+                            <p>三、打动投资人的商业计划书</p>
+                            <p>四、创业公司如何设计股权结构</p>
+                            <p>五、创业公司如何做估值</p>
+                            <p>六、投资人和创业者的对赌是什么，该不该做对赌</p>
+                            <p>七、创业公司如何迅速融资</p>
+                            <p>八、创业维艰：投资人教你逃过九死，直接一生</p>
+                            <p><br></p></div>
+                    </div>
+                    <div class="item-group">
+                        <p class="item-title">适宜人群</p>
+
+                        <p class="item-content">
+                        <p>创业者及意向创业人群</p></p>
+                    </div>
+                    <div class="item-group">
+                        <p class="item-title">帮助中心</p>
+                        <p class="item-content">
+                        <p>
+                            1. 购买后的课程在线可反复观看学习，视频有效期以具体课程信息为准。 <br>
+                            2. 课程暂不支持下载观看，均为在线观看视频。 <br>
+                            3. 课程一经购买，不可转让、不可退款；仅限购买账号观看。 <br>
+                            4. 如有问题请咨询客服饭桌君： 电话：18618172287 微信：fanzhuojun888 <br>
+                        </p></p>
+                    </div>
+                    <div class="item-group">
+                        <p class="item-title">关于小饭桌创业课堂在线课堂</p>
+                        <p class="item-content">
+                        <p>
+                            小饭桌创业课堂在线课堂是小饭桌旗下的线上视频课程产品，汇聚顶级创业大咖导师、行业资深专家，致力于用系统、垂直的知识体系让创业者认知升级、技能进阶。小饭桌创业课堂在线课堂用知识陪伴创业者从平凡到卓越！
+                        </p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="recommand-wrapper">
+                <p class="recommand-title">推荐课程</p>
+                <ul class="course-list">
+                    <li>
+                        <a href="#">
+                            <div class="course-info-group">
+                                <p class="course-title">顶级投资人眼中的创业成功规则</p>
+                                <p class="teacher">戴汨/愉悦资本创始合伙人</p>
+                            </div>
+                            <div class="thumbnail-group">
+                                <img src="https://static-image.xfz.cn/1526455098_289.png-course.list.small" alt=""
+                                     class="thunmbnail">
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="course-info-group">
+                                <p class="course-title">创业中如何进行风险管理</p>
+                                <p class="teacher">贺伊韩/未来法律CEO</p>
+                            </div>
+                            <div class="thumbnail-group">
+                                <img src="https://static-image.xfz.cn/1497870564_403.jpg-course.list.small" alt=""
+                                     class="thunmbnail">
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

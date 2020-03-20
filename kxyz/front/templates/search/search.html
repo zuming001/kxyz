@@ -1,0 +1,73 @@
+{% extends 'base/front_base.html' %}
+
+{% block title %}
+    搜索页面
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/search/search.min.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="main">
+        <div class="wrapper">
+            <div class="main-content-wrapper">
+                <div class="search-wrapper">
+                    <input type="text" placeholder="可输入新闻关键词、作者名字搜索">
+                    <div class="button">搜索</div>
+                </div>
+                <div class="list-out-group">
+                    <ul class="list-tab">
+                        <li class="active">热门推荐</li>
+                    </ul>
+                    <ul class="list-inner-group">
+                        <li>
+                            <a href="#">
+                                <div class="thumbnail-group">
+                                        <img src="{% static 'images/tianmao.min.jpg' %}" alt="">
+                                        <span class="tag">热点</span>
+                                </div>
+                                <div class="news-group">
+                                    <p class="title">
+                                        早报：双11天猫成交额2684亿，京东2044亿；WeWork财务指标存疑上市遇阻；多地取缔P2P
+                                    </p>
+                                    <p class="desc">网传华为双11为全员多发一个月工资，另有20亿特别奖</p>
+                                    <p class="more">
+                                        <span class="category">双十一 wework P2P</span>
+                                        <span class="author">福禄娃</span>
+                                        <span class="pub-time">11月12日</span>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="thumbnail-group">
+                                        <img src="{% static 'images/facebook.min.jpg' %}" alt="">
+                                        <span class="tag">干货分享</span>
+                                </div>
+                                <div class="news-group">
+                                    <p class="title">
+                                        早报：Facebook 7000页机密文件泄露；“携号转网”今天试运营；华为目录链连接50多个委办局
+                                    </p>
+                                    <p class="desc">电信赵君：运营商搞区块链是为了打破BAT的流量垄断</p>
+                                    <p class="more">
+                                        <span class="category">Facebook 华为区块链 阿里上市</span>
+                                        <span class="author">祖名</span>
+                                        <span class="pub-time">11月10日</span>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="load-more-group">
+                        <button class="load-more">
+                            查看更多
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% include 'common/sidebar.html' %}
+        </div>
+    </div>
+{% endblock %}

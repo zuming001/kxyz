@@ -1,0 +1,98 @@
+@import "../common/header.scss";
+@import "../common/body";
+@import "../common/footer";
+@import "../common/constants";
+
+.main {
+  .wrapper {
+
+    .venture-left-content {
+      float: left;
+      margin-right: 20px;
+      padding-bottom: 20px;
+      width: 792px;
+      background: #fff;
+      min-height: 1156px;
+      font-size: 0;
+      overflow: hidden;
+
+      .venture-book {
+        float: left;
+        min-width: 794px;
+        height: 500px;
+        ul {
+          li {
+            float: left;
+            height: 150px;
+            width: 370px;
+            border: 1px solid #ccc;
+            margin-top: 15px;
+            cursor: pointer;
+            margin-left: 16px;
+            position: relative;
+
+            .venture-img {
+              display: inline-block;
+              float: left;
+              width: 100px;
+              height: 150px;
+              margin-right: 14px;
+              background: url("https://www.xfz.cn/static/build/images/web-bp-pc.png");
+            }
+
+            .venture-introduct {
+              padding: 10px 0;
+              .venture-title {
+                display: inline-block;
+                white-space: nowrap;
+                width: 200px;
+                overflow: hidden;
+                font-size: 18px;
+                color: #212121;
+              }
+
+              .venture-word {
+                margin-top: 12px;
+                color: #878787;
+                width: 236px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                font-size: 13px;
+              }
+
+              .venture-price {
+                position: absolute;
+                right: 10px;
+                bottom: 15px;
+                color: #f73e3e;
+                font-size: 20px;
+              }
+            }
+            &:hover{
+              // 阴影的设置
+              box-shadow: 2px 2px 3px rgba(0,0,0,0.2);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .side-advertise {
+    cursor: pointer;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    width: 355px;
+    overflow: hidden;
+    background: #fff;
+    height: 200px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

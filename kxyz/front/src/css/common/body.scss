@@ -1,0 +1,187 @@
+@import "constants";
+
+body{
+    background:#f2f2f2;
+}
+
+.main{
+    width: 100%;
+    margin-top: $navHeight + 20px;
+
+    .wrapper{
+        width: $pageWidth;
+        margin: 0 auto;
+        overflow: hidden;
+
+        .main-content-wrapper{
+            float: left;
+            width: $mainBoxWidth;
+        }
+    }
+}
+
+.main{
+    .wrapper{
+        .sidebar-wrapper{
+            float: right;
+            width: $sidebarWidth;
+            background: #fff;
+
+            .title-group{
+                margin: 10px 10px;
+                padding-bottom: 3px;
+                overflow: hidden;
+                border-bottom: 2px solid $auxiliaryColor;
+                .title{
+                    float: left;
+                    color:$titleColor;
+                    font-size: 18px;
+                }
+                .more{
+                    float: right;
+                    font-size: 14px;
+                    color: $themColor;
+                    &:hover{
+                        color: $auxiliaryColor;
+                    }
+                }
+            }
+            .advertise{
+                margin: 10px;
+                position: relative;
+                img{
+                    width: 100%;
+                }
+
+                .img-title{
+                        position: absolute;
+                        bottom: 0;
+                        background: rgba(0,0,0,.5);
+                        height: 40px;
+                        line-height: 40px;
+                        left: 0;
+                        right: 0;
+                        font-size: 14px;
+                        color: #fff;
+                        padding: 0 20px;
+                        margin-bottom: 5px;
+                        overflow: hidden;
+                }
+            }
+            ul li {
+                    border: none;
+                    line-height: 41px;
+                    height: 41px;
+                    padding: 2px 20px;
+                .active-end{
+                    border: 1px solid $lineColor;
+                    font-size: 12px;
+                    text-align: center;
+                    line-height: 20px;
+                    color: #ccc;
+                    margin-right: 5px;
+                }
+                .active-title{
+                    height: 24px;
+                    line-height: 24px;
+                    vertical-align: middle;
+                    overflow: hidden;
+                    width: 240px;
+                    display: inline-block;
+                    color: $themColor;
+                }
+            }
+
+            .focus-group{
+                padding: 0 20px;
+                overflow: hidden;
+                .left-group{
+                    width: 190px;
+                    float: left;
+                    li{
+                        width: 100%;
+                        height: 50px;
+                        background: url("https://www.xfz.cn/static/build/images/side-icon.png");
+                        background-repeat: no-repeat;
+                        background-size: 20%;
+                        line-height: 50px;
+                        overflow: hidden;
+                        a{
+                            float: left;
+                            margin-left: 40px;
+                            color: $themColor;
+                            font-size: 14px;
+                        }
+                    }
+                    .zhihu{
+                        background-position: 0 4px;
+                    }
+                    .weibo{
+                        background-position: 0 -52px;
+                    }
+                    .toutiao{
+                        background-position: 0 -114px;
+                    }
+                }
+                .right-group{
+                    float: right;
+                    width: 88px;
+                    margin-right: 30px;
+                    background: url("https://www.xfz.cn/static/build/images/xfz-wechat-share.png");
+                    background-size: 100%;
+                    background-repeat: no-repeat;
+                    .desc{
+                        margin-top: 88px;
+                        color: $themColor;
+                        text-align: center;
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            .side-hot-news{
+                .hot-list-group{
+                    overflow: hidden;
+                    li{
+                        padding: 0 20px 60px;
+                        margin: 20px 0;
+                        border-bottom: 1px dashed $lineColor;
+                        &:last-of-type{
+                          border-bottom: none;
+                        };
+                        .left-group{
+                            float: left;
+                            width: 204px;
+                            color:$themColor;
+                            .title{
+                                font-size: 16px;
+                                letter-spacing: 1px;
+                                line-height:20px;
+                                &:hover{
+                                    color: $auxiliaryColor;
+                                }
+                            }
+                            .more{
+                                .category{
+                                    float: left;
+                                }
+                                .pub-time{
+                                    float: right;
+                                }
+                            }
+                        }
+                        .right-group{
+                            float: right;
+                            width: 102px;
+                            height: 72px;
+                            img{
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
