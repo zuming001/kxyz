@@ -1,7 +1,7 @@
 aliyun-python-sdk-core-v3==2.13.11
 aliyun-python-sdk-dysmsapi==1.0.0
 aliyunsdkcore==1.0.3
-certifi==2019.11.28
+certifi==2022.12.7
 chardet==3.0.4
 Django==2.2.8
 django-debug-toolbar==2.1
